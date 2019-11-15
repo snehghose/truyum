@@ -1,0 +1,38 @@
+<div class="row center">
+  <div class="col-12 col-md-6 col-lg-4 mt-2">
+    <h2>Cart</h2>
+    <div class="alert alert-secondary" *ngIf="cart==null||cart.menuItemList===null||cart.menuItemList.length===0; else cartItems">
+      No items in cart. Use 'Add to Cart' option in menu list.
+    </div>
+    <ng-template #cartItems>
+      <ul class="list-group mt-3">
+        <li class="list-group-item" *ngFor="let menuItem of cart.menuItemList">
+          <div class="row">
+            <div class="col-9 color-gray">{{menuItem.itemName}}</div>
+            <div class="col-3">
+              <div class="d-flex justify-content-end text-danger">
+                {{menuItem.price|currency:'INR'}}
+              </div>
+
+            </div>
+              <div class="col-9 color-gray">
+                  <span>{{menuItem.quantity}}</span></div>
+              <div class="col-3 d-flex justify-content-end"><a><i class="material-icons color-gray"
+                    (click)="onRemove(menuItem.id)">delete_forever</i></a>
+              </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <h4><span>Total</span>
+            <span class="d-flex justify-content-end">
+              <small class="text-danger">{{cart.total|currency:'INR'}}</small>
+            </span>
+          </h4>
+        </li>
+      </ul>
+    </ng-template>
+    <div class="row justify-content-center mt-2">
+      <a href="#" class="btn btn-danger" routerLink="/menu">Continue Shopping</a>
+    </div>
+  </div>
+</div>

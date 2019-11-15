@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<bean id="menuItem1" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="1" />
+		<property name="itemName" value="Sandwich" />
+		<property name="price" value="99" />
+		<property name="isActive" value="true" />
+		<property name="dateOfLaunch" value="2017/03/15" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="true" />
+		<property name="imagePath" value="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1353&amp;q=80"/>
+		<property name="quantity" value="0"/>
+	</bean>
+
+	<bean id="menuItem2" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="2" />
+		<property name="itemName" value="Burger" />
+		<property name="price" value="129" />
+		<property name="isActive" value="true" />
+		<property name="dateOfLaunch" value="2017/12/23" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+		<property name="imagePath" value="https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"/>
+		<property name="quantity" value="0"/>
+	</bean>
+
+	<bean id="menuItem3" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="3" />
+		<property name="itemName" value="Pizza" />
+		<property name="price" value="149" />
+		<property name="isActive" value="true" />
+		<property name="dateOfLaunch" value="2018/08/21" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+		<property name="imagePath" value="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+		<property name="quantity" value="0"/>
+	</bean>
+
+	<bean id="menuItem4" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="4" />
+		<property name="itemName" value="French Fries" />
+		<property name="price" value="57" />
+		<property name="isActive" value="false" />
+		<property name="dateOfLaunch" value="2017/07/02" />
+		<property name="category" value="Starters" />
+		<property name="freeDelivery" value="true" />
+		<property name="imagePath" value="https://images.unsplash.com/photo-1526230427044-d092040d48dc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+		<property name="quantity" value="0"/>
+	</bean>
+
+	<bean id="menuItem5" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="5" />
+		<property name="itemName" value="Chocolate Brownie" />
+		<property name="price" value="32" />
+		<property name="isActive" value="true" />
+		<property name="dateOfLaunch" value="2022/11/02" />
+		<property name="category" value="Dessert" />
+		<property name="freeDelivery" value="true" />
+		<property name="imagePath" value="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+		<property name="quantity" value="0"/>
+	</bean>
+
+
+	<bean name="menuItemList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="menuItem1" />
+				<ref bean="menuItem2" />
+				<ref bean="menuItem3" />
+				<ref bean="menuItem4" />
+				<ref bean="menuItem5" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>

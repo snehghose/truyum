@@ -1,0 +1,92 @@
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <div class="card-body">
+      <h3>
+        Signup
+      </h3>
+      <div class="alert alert-success mt-4" role="alert" *ngIf="formSubmitted">
+        Successfully Signed Up !!
+      </div>
+      <div *ngIf="formSubmitted">
+        <a href="#" class="btn btn-danger" routerLink="/login">Login</a>
+      </div>
+      <form [formGroup]="signUpForm" (submit)="onSubmitSignup()" *ngIf="!formSubmitted">
+        <div class="alert alert-danger" role="alert"
+          *ngIf="signUpForm.get('userName').touched && signUpForm.get('userName').hasError('userNameTaken')">
+          Username already exists
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="signUpForm.pending">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-12 col-lg-6">
+            <label for="username">Username</label>
+            <input type="text" placeholder="Enter Username" class="form-control" name="username" id="username"
+              formControlName="userName">
+            <small class="text-danger"
+              *ngIf="signUpForm.get('userName').touched && signUpForm.get('userName').hasError('required')">Username is
+              required</small>
+            <small class="text-danger"
+              *ngIf="signUpForm.get('userName').touched && signUpForm.get('userName').hasError('maxlength')">Username
+              cannot exceed 20 characters</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <label for="firstname">First Name</label>
+            <input type="text" placeholder="Enter First Name" class="form-control" name="firstname" id="firstname"
+              formControlName="firstName">
+            <small class="text-danger"
+              *ngIf="signUpForm.get('firstName').touched && signUpForm.get('firstName').hasError('pattern')">First Name
+              cannot have numbers</small>
+            <small class="text-danger"
+              *ngIf="signUpForm.get('firstName').touched && signUpForm.get('firstName').hasError('required')">First Name
+              is
+              required</small>
+            <small class="text-danger"
+              *ngIf="signUpForm.get('firstName').touched && signUpForm.get('firstName').hasError('maxlength')">First
+              Name cannot exceed 20 characters</small>
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="lastname">Last Name</label>
+            <input type="text" placeholder="Enter Last Name" class="form-control" name="lastname" id="lastname"
+              formControlName="lastName">
+            <small class="text-danger"
+              *ngIf="signUpForm.get('lastName').touched && signUpForm.get('lastName').hasError('pattern')">Last Name
+              cannot have numbers</small>
+            <small class="text-danger"
+              *ngIf="signUpForm.get('lastName').touched && signUpForm.get('lastName').hasError('required')">Last Name is
+              required</small>
+            <small class="text-danger"
+              *ngIf="signUpForm.get('lastName').touched && signUpForm.get('lastName').hasError('maxlength')">Last Name
+              cannot exceed 20 characters</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter Password" class="form-control" name="password" id="password"
+              formControlName="password">
+            <small class="text-danger"
+              *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('required')">Password is
+              required</small>
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" placeholder="Enter Confirm Password" class="form-control" name="confirmPassword"
+              id="confirmPassword" formControlName="confirmPassword">
+            <small class="text-danger"
+              *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').hasError('required')">Confirm
+              Password is required</small>
+              <small class="text-danger"
+              *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').hasError('nomatch')">Confirm
+              Password should match Password</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger" [disabled]="!signUpForm.valid">Signup</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="card mt-2">
+    <img [src]="menuItem.imagePath" alt="image" class="card-img-top">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-7">
+        <span class="text-muted size">{{menuItem.itemName}}</span></div>
+        <div class="ml-auto float-right mr-3">
+        <span class="text-danger size1">{{menuItem.price|currency:'INR'}}</span>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-7">
+          <span class="badge badge-success" *ngIf="menuItem.isActive else notActive">Active</span>
+          <ng-template #notActive><span class="badge badge-danger">Inactive</span></ng-template>
+          <span class="text-muted">{{menuItem.category}}</span>
+        </div>
+        <div class="ml-auto float-right mr-3" *ngIf="menuItem.freeDelivery">
+          <i class="material-icons shipping-color">local_shipping</i>
+          <span class="badge badge-info">FREE</span>
+        </div>
+      </div>
+      <div class="row mt-2" *ngIf="isEditAllowed()">
+        <span class="text-muted col-5"><i class="material-icons">access_time</i>Launch
+          {{menuItem.dateOfLaunch|date}}
+        </span>
+        <span class="float-right ml-auto mr-3">
+          <a [routerLink]="['/itemEdit',menuItem.id]" class="btn btn-danger float-right">
+            <i class="material-icons align-icon">edit</i>Edit
+          </a>
+        </span>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-2" *ngIf="itemAdded">
+          <div class="alert alert-success alert-dismissible fade show alert-msg" role="alert">
+            Item added to Cart successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+          <div class="row mt-2" *ngIf="!isEditAllowed()">
+              <span class="float-right ml-auto mr-3">
+                  <a href="#" class="btn btn-danger float-right" (click)="onAddToCart(menuItem.id)">
+                      <i class="material-icons">add_shopping_cart</i>Add to Cart
+                  </a>
+              </span>
+          </div>
+    </div>
+  </div>

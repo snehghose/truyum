@@ -1,0 +1,43 @@
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4 ">
+      <div class="card">
+        <div class="card-body">
+          <h3>
+            Login
+          </h3>
+          <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+            <div class="alert alert-info" role="alert" *ngIf="notLogged">
+              Please login before adding an item to Cart.
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="!isLoginValid()">
+              Invalid Username/Password.
+            </div>
+
+            <div class="form-group col-12">
+              <label for="username">Username</label>
+              <input type="text" placeholder="Enter Username" class="form-control" name="username" id="username" ngModel
+                required #username="ngModel">
+              <small class="text-danger" *ngIf="username.touched && !username.valid">Username is required</small>
+            </div>
+
+            <div class="form-group col-12">
+              <label for="password">Password</label>
+              <input type="password" placeholder="Enter Password" class="form-control" name="password" id="password"
+                ngModel required #password="ngModel">
+              <small class="text-danger" *ngIf="password.touched && !password.valid">Password is required</small>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <button type="submit" class="btn btn-danger" [disabled]="!loginForm.valid">Login</button>
+              </div>
+              <div class="col-6">
+                <small>New Here?<a routerLink="/signup">Signup</a></small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

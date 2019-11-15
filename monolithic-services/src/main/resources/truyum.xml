@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<context:component-scan base-package="com.cognizant"/>
+	<mvc:annotation-driven/>
+	<bean name="menuItem1" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="1" />
+		<property name="name" value="Sandwich" />
+		<property name="price" value="99" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch" value="15/03/2017" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+	<bean name="menuItem2" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="2" />
+		<property name="name" value="Burger" />
+		<property name="price" value="129" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch" value="23/12/2017" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+	</bean>
+
+	<bean name="menuItem3" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="3" />
+		<property name="name" value="Pizza" />
+		<property name="price" value="149" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch" value="21/08/2018" />
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+	</bean>
+
+	<bean name="menuItem4" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="4" />
+		<property name="name" value="French Fries" />
+		<property name="price" value="57" />
+		<property name="active" value="false" />
+		<property name="dateOfLaunch" value="02/07/2017" />
+		<property name="category" value="Starters" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+	<bean name="menuItem5" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="5" />
+		<property name="name" value="Chocolate Brownie" />
+		<property name="price" value="32" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch" value="02/11/2022" />
+		<property name="category" value="Dessert" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+
+	<bean name="menuItemDaoImpl"
+		class="com.cognizant.truyum.dao.MenuItemDaoCollectionImpl">
+		<property name="menuItemList">
+			<list>
+				<ref bean="menuItem1 " />
+				<ref bean="menuItem2 " />
+				<ref bean="menuItem3 " />
+				<ref bean="menuItem4 " />
+				<ref bean="menuItem5 " />
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="menuItemService" class="com.cognizant.truyum.service.MenuItemService"></bean>
+	<bean name="menuItemController" class="com.cognizant.truyum.controller.MenuItemController"></bean>
+
+</beans>
